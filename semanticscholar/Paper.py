@@ -26,6 +26,7 @@ class Paper(SemanticScholarObject):
         'authors.paperCount',
         'authors.url',
         'citationCount',
+        'citationStyles', # me        
         'citations',
         'citations.abstract',
         'citations.authors',
@@ -119,6 +120,7 @@ class Paper(SemanticScholarObject):
         self._authors = None
         self._citationCount = None
         self._citations = None
+        self._citationStyles = None # me        
         self._corpusId = None
         self._embedding = None
         self._externalIds = None
@@ -160,6 +162,13 @@ class Paper(SemanticScholarObject):
         :type: :class:`int`
         '''
         return self._citationCount
+    
+    @property
+    def citationStyles(self) -> int:
+        '''
+        :type: :class:`int`
+        '''
+        return self._citationStyles
 
     @property
     def citations(self) -> list:
@@ -320,6 +329,8 @@ class Paper(SemanticScholarObject):
             self._authors = items
         if 'citationCount' in data:
             self._citationCount = data['citationCount']
+        if 'citationStyles' in data: # me
+            self._citationStyles = data['citationStyles']
         if 'citations' in data:
             items = []
             for item in data['citations']:
