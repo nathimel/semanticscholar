@@ -138,6 +138,7 @@ class Paper(SemanticScholarObject):
         self._s2FieldsOfStudy = None
         self._title = None
         self._tldr = None
+        self._url  = None # me
         self._venue = None
         self._year = None
         self._init_attributes(data)
@@ -148,7 +149,7 @@ class Paper(SemanticScholarObject):
         :type: :class:`str`
         '''
         return self._abstract
-
+    
     @property
     def authors(self) -> list:
         '''
@@ -164,11 +165,18 @@ class Paper(SemanticScholarObject):
         return self._citationCount
     
     @property
-    def citationStyles(self) -> int:
+    def citationStyles(self) -> dict: # me
         '''
         :type: :class:`int`
         '''
         return self._citationStyles
+    
+    @citationStyles.setter
+    def citationStyles(self, value) -> dict:
+        '''
+        :type: :class:`dict`
+        '''
+        self._citationStyles = value
 
     @property
     def citations(self) -> list:
